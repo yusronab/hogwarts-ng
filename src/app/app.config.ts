@@ -1,4 +1,4 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 import { routes } from './app.routes';
@@ -14,6 +14,7 @@ import { homeReducer } from './features/siswa/store/home/home.reducer';
 import { HomeEffects } from './features/siswa/store/home/home.effects';
 import { classroomReducer } from './features/siswa/store/classroom/classroom.reducer';
 import { ClassroomEffect } from './features/siswa/store/classroom/classroom.effects';
+import { provideServiceWorker } from '@angular/service-worker';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +27,9 @@ export const appConfig: ApplicationConfig = {
       home: homeReducer,
       classroom: classroomReducer,
     }),
-    provideEffects([AppEffects, AuthEffects, HomeEffects, ClassroomEffect]),
+    provideEffects([AppEffects, AuthEffects, HomeEffects, ClassroomEffect]), provideServiceWorker('ngsw-worker.js', {
+            enabled: !isDevMode(),
+            registrationStrategy: 'registerWhenStable:30000'
+          }),
   ],
 };

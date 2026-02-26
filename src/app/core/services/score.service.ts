@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { startWith, Subject } from 'rxjs';
 import { fetchEventSource } from '@microsoft/fetch-event-source';
 import { io, Socket } from 'socket.io-client';
+import { environment } from '../../../environments/environment';
 
 export type GameScore = {
   lakers: number;
@@ -16,7 +17,7 @@ const initialState = {
   providedIn: 'root',
 })
 export class ScoreService {
-  private API = 'http://localhost:3000';
+  private API = environment.wsUrl;
 
   private abortController = new AbortController();
 

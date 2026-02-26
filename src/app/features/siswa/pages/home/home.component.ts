@@ -47,11 +47,11 @@ export class HomeComponent {
 
   start() {
     this.runningSse = true;
-    this.scoreService.startSocket();
+    // this.scoreService.startSocket();
   }
 
   stop() {
     this.runningSse = false;
-    this.scoreService.stopSocket();
+    // this.scoreService.stopSocket();
   }
 }

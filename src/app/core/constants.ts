@@ -1,2 +1,4 @@
-export const baseUrl = 'https://be.simagang.my.id/api/v1'
-export const baseImageUrl = 'https://be.simagang.my.id'
+import { environment } from "../../environments/environment"
+
+export const baseUrl = environment.apiUrl
+export const baseImageUrl = environment.imageUrl
