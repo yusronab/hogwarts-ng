@@ -1,0 +1,112 @@
+<div class="grid grid-cols-5 gap-6">
+  <section
+    class="col-span-5 md:col-span-1 flex flex-row md:flex-col gap-2 h-fit"
+  >
+    <button
+      class="button md:text-left"
+      [class.active]="menu === 'account'"
+      (click)="changeMenuTo('account')"
+    >
+      Informasi Umum
+    </button>
+    <button
+      class="button md:text-left"
+      [class.active]="menu === 'password'"
+      (click)="changeMenuTo('password')"
+    >
+      Keamanan Akun
+    </button>
+  </section>
+
+  <section class="col-span-5 md:col-span-4 space-y-6">
+    @if (menu === "account") {
+      <h2>Informasi Umum</h2>
+
+      <form
+        [formGroup]="form"
+        (ngSubmit)="onSubmit()"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <div class="col-span-1 md:col-span-2">
+          <app-base-profile-image-uploader formControlName="profileImage" />
+        </div>
+
+        <app-base-input-text
+          label="Nama Lengkap"
+          formControlName="fullName"
+          [error]="isInvalid(form, 'fullName')"
+          [helperText]="getErrorMessage(form, 'fullName')"
+          [required]="true"
+        />
+
+        <app-base-input-text
+          label="Username"
+          formControlName="username"
+          [error]="isInvalid(form, 'username')"
+          [helperText]="getErrorMessage(form, 'username')"
+          [required]="true"
+        />
+
+        <app-base-input-text
+          label="Email"
+          type="email"
+          placeholder="Masukkan email"
+          formControlName="email"
+          [disabled]="true"
+        />
+
+        <app-base-input-text
+          label="No. Hp"
+          formControlName="phone"
+          [error]="isInvalid(form, 'phone')"
+          [helperText]="getErrorMessage(form, 'phone')"
+          [required]="true"
+        />
+
+        <div class="place-self-end col-span-1 md:col-span-2">
+          <app-base-button [type]="'submit'">Simpan</app-base-button>
+        </div>
+      </form>
+    } @else {
+      <div>
+        <h2>Kemaman Akun</h2>
+        <p>
+          Setelah mengubah password kamu harus login kembali untuk memperbarui
+          data
+        </p>
+      </div>
+
+      <form
+        [formGroup]="formPassword"
+        (ngSubmit)="onSubmitPassword()"
+        class="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        <app-base-input-text
+          label="Password Lama"
+          placeholder="Masukkan password lama"
+          type="password"
+          formControlName="oldPassword"
+          [error]="isInvalid(formPassword, 'oldPassword')"
+          [helperText]="getErrorMessage(formPassword, 'oldPassword')"
+          [required]="true"
+        />
+
+        <app-base-input-text
+          label="Password Baru"
+          placeholder="Masukkan password baru"
+          type="password"
+          formControlName="newPassword"
+          [error]="isInvalid(formPassword, 'newPassword')"
+          [helperText]="getErrorMessage(formPassword, 'newPassword')"
+          [required]="true"
+        />
+
+        <div class="place-self-end col-span-1 md:col-span-2">
+          <app-base-button [type]="'submit'" width="fit-content"
+            >Simpan</app-base-button
+          >
+        </div>
+      </form>
+    }
+  </section>
+</div>

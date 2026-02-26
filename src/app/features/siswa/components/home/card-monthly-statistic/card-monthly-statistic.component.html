@@ -1,0 +1,15 @@
+<section>
+  <h2>Statistik Bulanan</h2>
+
+  @if (barChart(); as chart) {
+    <apx-chart
+      [series]="chart.series"
+      [chart]="chart.chart"
+      [xaxis]="chart.xaxis"
+      [plotOptions]="chart.plotOptions"
+      [dataLabels]="chart.dataLabels"
+      [legend]="chart.legend"
+    >
+    </apx-chart>
+  }
+</section>

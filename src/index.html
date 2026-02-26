@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>HogwartsApp</title>
+  <title>Hogwarts App</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -10,4 +10,15 @@
 <body>
   <app-root></app-root>
 </body>
+<script>
+  (function () {
+    const saved = localStorage.getItem('app_theme');
+    if (saved) {
+      if (saved === 'dark') document.documentElement.classList.add('dark');
+    } else {
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (prefersDark) document.documentElement.classList.add('dark');
+    }
+  })();
+</script>
 </html>

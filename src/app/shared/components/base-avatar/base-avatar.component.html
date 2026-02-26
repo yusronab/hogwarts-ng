@@ -1,0 +1,10 @@
+@if (image) {
+  <img
+    class="avatar border"
+    [src]="imageUrl"
+    [alt]="alt"
+    [ngStyle]="styleVars"
+  />
+} @else {
+  <i-lucide [img]="User" [size]="width"></i-lucide>
+}

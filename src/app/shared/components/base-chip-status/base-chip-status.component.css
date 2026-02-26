@@ -1,0 +1,87 @@
+.chip {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 700;
+  text-align: center;
+  width: fit-content;
+}
+
+/* DEFAULT */
+.default {
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+/* SOLID COLORS */
+.danger {
+  background: #e33a3a;
+  color: white;
+}
+
+.primary {
+  background: #4979e2;
+  color: white;
+}
+
+.olive {
+  background: #97a837;
+  color: white;
+}
+
+.magenta {
+  background: #a83786;
+  color: white;
+}
+
+.purple {
+  background: #7657ff;
+  color: white;
+}
+
+.orange {
+  background: #ffad23;
+  color: white;
+}
+
+.success {
+  background: #279b24;
+  color: white;
+}
+
+/* BORDERED VARIANTS */
+.sp1 {
+  color: #f2b705;
+  border: 1px solid #f2b705;
+}
+
+.sp2 {
+  color: #f97316;
+  border: 1px solid #f97316;
+}
+
+.sp3 {
+  color: #dc2626;
+  border: 1px solid #dc2626;
+}
+
+.planned {
+  color: #0284c7;
+  border: 1px solid #0284c7;
+}
+
+.ongoing {
+  color: #eab308;
+  border: 1px solid #eab308;
+}
+
+.finished {
+  color: #16a34a;
+  border: 1px solid #16a34a;
+}
+
+.reported {
+  color: #7c3aed;
+  border: 1px solid #7c3aed;
+}

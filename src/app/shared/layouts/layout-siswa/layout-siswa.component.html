@@ -1,0 +1,60 @@
+<header
+  class="h-16 flex items-center justify-between px-6 border-b border-border bg-sidebar"
+>
+  <button [routerLink]="['/home']" class="font-semibold text-lg cursor-pointer">
+    Hogwarts App
+  </button>
+
+  <div class="relative">
+    <button
+      class="w-10 h-10 rounded-full overflow-hidden border border-foreground flex items-center justify-center cursor-pointer"
+      (click)="toggle($event)"
+    >
+      <app-base-avatar
+        [image]="user()?.profileImage"
+        [alt]="user()?.fullName || 'Profile Avatar'"
+      />
+    </button>
+
+    @if (open) {
+      <div
+        class="absolute right-0 top-12 w-56 bg-card border border-border rounded-xl shadow-lg p-2 flex flex-col gap-1 z-50"
+      >
+        <div class="px-3 py-2 border-b border-border">
+          <strong class="block">{{ user()?.username }}</strong>
+          <span class="text-sm text-muted-foreground">{{ user()?.nis }}</span>
+        </div>
+
+        <button
+          class="px-3 py-2 rounded-md text-left hover:bg-accent"
+          [routerLink]="['/student-profile']"
+        >
+          User Profile
+        </button>
+
+        <button
+          class="px-3 py-2 rounded-md text-left hover:bg-accent"
+          [routerLink]="['/classroom']"
+        >
+          Classroom
+        </button>
+
+        <div class="flex items-center justify-between px-3 py-2">
+          <span class="text-sm">Dark Mode</span>
+          <app-base-theme-toggle />
+        </div>
+
+        <button
+          class="px-3 py-2 rounded-md text-left text-destructive hover:bg-[oklch(0.704_0.191_22.216/0.1)] border-t border-border mt-1"
+          (click)="onLogout()"
+        >
+          Logout
+        </button>
+      </div>
+    }
+  </div>
+</header>
+
+<div class="content">
+  <router-outlet />
+</div>

@@ -1,0 +1,19 @@
+<button
+  [attr.type]="type"
+  [disabled]="isDisabled"
+  class="btn"
+  [ngClass]="variant"
+  [ngStyle]="styleVars"
+  (click)="onClick.emit($event)"
+>
+  <ng-container *ngIf="loading; else content">
+    <span class="loading">
+      Loading...
+      <span class="spinner"></span>
+    </span>
+  </ng-container>
+
+  <ng-template #content>
+    <ng-content></ng-content>
+  </ng-template>
+</button>

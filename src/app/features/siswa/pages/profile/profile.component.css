@@ -1,0 +1,15 @@
+.button {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  color: var(--muted-foreground);
+}
+
+.button:hover,
+.button.active {
+  background-color: var(--muted);
+  color: var(--primary);
+}

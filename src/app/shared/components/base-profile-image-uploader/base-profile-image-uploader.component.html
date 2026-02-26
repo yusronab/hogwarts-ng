@@ -1,0 +1,39 @@
+<div class="flex flex-col items-center gap-3">
+  <div
+    class="w-32 h-32 rounded-full overflow-hidden border-border bg-muted flex items-center justify-center border"
+  >
+    @if (previewUrl()) {
+      <img
+        [src]="previewUrl()"
+        alt="Preview"
+        class="w-full h-full object-cover"
+      />
+    } @else {
+      <i-lucide [img]="UserIcon" [size]="'100%'"></i-lucide>
+    }
+  </div>
+
+  <input
+    type="file"
+    accept="image/*"
+    hidden
+    #fileInput
+    (change)="handleFileChange($event)"
+  />
+
+  <div class="grid gap-2 md:gap-6 grid-cols-2 w-full">
+    <app-base-button type="button" variant="text" (onClick)="fileInput.click()">
+      Ubah Foto
+    </app-base-button>
+
+    <app-base-button
+      type="button"
+      variant="text"
+      color="tomato"
+      [disabled]="removeImage()"
+      (onClick)="handleRemove()"
+    >
+      Hapus
+    </app-base-button>
+  </div>
+</div>

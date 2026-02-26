@@ -1,0 +1,21 @@
+<section class="flex flex-col justify-center items-center gap-6">
+  @if (detailMeeting(); as meeting) {
+    <app-base-avatar
+      [image]="meeting.schedule.teacher.profileImage"
+      [alt]="meeting.schedule.teacher.fullName"
+      width="80px"
+      height="80px"
+    />
+    <div class="text-center">
+      <h2>{{ meeting.schedule.teacher.fullName }}</h2>
+      <small>{{ meeting.schedule.teacher.role }}</small>
+    </div>
+
+    <div class="text-center">
+      <small>Sisa Waktu Pertemuan:</small>
+      <app-countdown-meeting [expiredAt]="expiredAt()" />
+    </div>
+
+    <app-dialog-scanner />
+  }
+</section>

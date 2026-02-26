@@ -1,0 +1,28 @@
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+  cursor: pointer;
+  border: none;
+}
+
+.btn.primary {
+  background: #5053ff;
+}
+
+.btn.danger {
+  background: #ff1414;
+}
+
+.icon {
+  color: white;
+}

@@ -1,0 +1,21 @@
+@if (state.isOpen) {
+  <div class="overlay">
+    <div class="dialog">
+      <img [src]="iconPath" alt="alert icon" />
+      <h2>{{ state.title }}</h2>
+      <p>{{ state.description }}</p>
+
+      <div class="actions w-full">
+        @if (state.type === "confirm") {
+          <app-base-button variant="outlined" (click)="handleClose()" class="w-full">
+            {{ state.textNegative }}
+          </app-base-button>
+        }
+
+        <app-base-button (click)="handleConfirm()" class="w-full">
+          {{ state.textPositive }}
+        </app-base-button>
+      </div>
+    </div>
+  </div>
+}

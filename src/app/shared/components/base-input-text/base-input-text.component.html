@@ -1,0 +1,42 @@
+<div class="wrapper">
+  <label *ngIf="label" [class.error]="error" [for]="id">
+    {{ label }}
+    <span *ngIf="required" class="required">*</span>
+  </label>
+
+  <div class="input-container">
+    <input
+      [id]="id"
+      [name]="name"
+      [type]="computedType"
+      [value]="value"
+      (input)="handleInput($any($event.target).value)"
+      (blur)="onTouched()"
+      [placeholder]="placeholder"
+      [required]="required"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      [class.error]="error"
+      [class.has-toggle]="isPassword"
+    />
+
+    <button
+      *ngIf="isPassword"
+      type="button"
+      class="toggle"
+      (click)="showPassword = !showPassword"
+    >
+      <ng-container *ngIf="showPassword; else hidePassword">
+        <i-lucide [img]="EyeIcon" [size]="20"></i-lucide>
+      </ng-container>
+
+      <ng-template #hidePassword>
+        <i-lucide [img]="EyeOffIcon" [size]="20"></i-lucide>
+      </ng-template>
+    </button>
+  </div>
+
+  <small *ngIf="helperText" [class.error]="error" class="font-normal">
+    {{ helperText }}
+  </small>
+</div>

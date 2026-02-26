@@ -1,0 +1,35 @@
+<div class="card" [class.active]="isCurrent()">
+  <div class="time">
+    <i-lucide [img]="Clock10Icon" [size]="18"></i-lucide>
+    <span>
+      {{ meeting().schedule.hour_start.slice(0, 5) }} -
+      {{ meeting().schedule.hour_end.slice(0, 5) }}
+    </span>
+  </div>
+
+  <div class="subject">
+    {{ meeting().subject.name }}
+  </div>
+
+  <div class="desc">
+    <b>{{ meeting().title }}</b>
+    {{ meeting().description ? " - " + meeting().description : "" }}
+  </div>
+
+  <div class="footer">
+    <div class="teacher">
+      {{ meeting().teacher.fullName }}
+    </div>
+
+    @if (isCurrent()) {
+      <app-base-button
+        variant="text"
+        width="fit-content"
+        type="button"
+        (onClick)="attend()"
+      >
+        Hadiri
+      </app-base-button>
+    }
+  </div>
+</div>

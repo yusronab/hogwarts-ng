@@ -1,0 +1,68 @@
+<div class="grid grid-cols-3 gap-6">
+  <div class="col-span-3 md:col-span-3">
+    <section class="space-y-6">
+      @if (loading$ | async) {
+        <div class="animate-pulse text-sm">Loading...</div>
+      } @else {
+        @if (meeting$ | async; as meetings) {
+          @if (meetings.length === 0) {
+            <div class="flex gap-2 items-center">
+              <i-lucide [img]="InfoIcon" [size]="20"></i-lucide>
+              <p>Tidak ada pertemuan hari ini</p>
+            </div>
+          } @else {
+            <div class="scroll">
+              @for (meeting of meetings; track meeting.id) {
+                <app-card-today-meeting [meeting]="meeting" />
+              }
+            </div>
+          }
+        }
+      }
+    </section>
+  </div>
+
+  <div class="col-span-3 md:col-span-2">
+    <app-card-report-info />
+  </div>
+
+  <div class="col-span-3 md:col-span-1">
+    <app-card-subject-percentage />
+  </div>
+
+  <div class="col-span-3 md:col-span-1">
+    <section class="space-y-6">
+      <h2>Scores</h2>
+
+      <div>
+        @if (gameScore$ | async; as score) {
+          <div class="flex justify-between hover:bg-muted p-2 rounded-lg">
+            <p>Lakers</p>
+            <span>{{ score.lakers }}</span>
+          </div>
+          <div class="flex justify-between hover:bg-muted p-2 rounded-lg">
+            <p>Nuggets</p>
+            <span>{{ score.denver }}</span>
+          </div>
+        }
+      </div>
+
+      <div class="gap-6 grid grid-cols-2">
+        <app-base-button
+          [variant]="'text'"
+          [disabled]="runningSse"
+          (onClick)="start()"
+        >
+          Start
+        </app-base-button>
+        <app-base-button [variant]="'text'" color="tomato" (onClick)="stop()">
+          Stop
+        </app-base-button>
+      </div>
+    </section>
+  </div>
+
+  <div class="col-span-3 md:col-span-2">
+    <app-card-monthly-statistic />
+  </div>
+</div>

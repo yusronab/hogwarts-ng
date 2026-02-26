@@ -1,0 +1,52 @@
+<section>
+  <div class="flex justify-between items-center mb-6">
+    <h2>Siswa Hadir</h2>
+    <app-base-button
+      width="fit-content"
+      variant="text"
+      (onClick)="refreshMeeting()"
+    >
+      <i-lucide [img]="RefreshCcw"></i-lucide>
+    </app-base-button>
+  </div>
+
+  @if (attendance(); as attendances) {
+    @for (item of attendances; track item.id) {
+      <div
+        class="flex gap-2 p-2 rounded-xl"
+        [class]="
+          isCurrentUser(item.student.id)
+            ? 'hover:bg-[oklch(60.378%_0.18447_142.61/0.1)]'
+            : 'hover:bg-muted'
+        "
+      >
+        <app-base-avatar
+          [image]="item.student.profileImage"
+          [alt]="item.student.fullName"
+        />
+
+        <div
+          class="flex flex-col md:flex-row justify-between md:items-center w-full"
+        >
+          <div class="flex items-center justify-between gap-2">
+            <p>{{ item.student.fullName }}</p>
+
+            @if (isCurrentUser(item.student.id)) {
+              <div
+                class="bg-[var(--app)] px-2 rounded-full text-sm font-semibold"
+              >
+                Kamu
+              </div>
+            }
+          </div>
+
+          <span>
+            {{ formatDateTime(item.presentTime) }}
+          </span>
+        </div>
+      </div>
+    }
+  } @else {
+    <p>Belum ada siswa yang hadir</p>
+  }
+</section>

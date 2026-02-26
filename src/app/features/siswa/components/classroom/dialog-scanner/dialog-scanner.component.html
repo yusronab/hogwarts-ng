@@ -1,0 +1,16 @@
+<app-base-button (onClick)="openDialog()">
+  <i-lucide [img]="ScanQrCode" [size]="20"></i-lucide>
+  Scan QR
+</app-base-button>
+
+@if (open()) {
+  <div class="overlay">
+    <div class="dialog">
+      <h2>Scan QR Code</h2>
+
+      <div id="qr-reader" class="reader"></div>
+
+      <button (click)="closeDialog()">Tutup</button>
+    </div>
+  </div>
+}

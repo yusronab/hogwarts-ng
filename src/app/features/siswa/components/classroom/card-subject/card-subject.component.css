@@ -1,0 +1,29 @@
+.card {
+  all: unset; /* reset default button */
+  min-width: 260px;
+  background: var(--card);
+  padding: 16px;
+  border-radius: 16px;
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  box-shadow: 0 1px 2px rgba(3, 18, 26, 0.2);
+  border: 1px solid var(--border);
+  cursor: pointer;
+}
+
+.card:focus-visible {
+  outline: 2px solid var(--color-destructive);
+  outline-offset: 2px;
+}
+
+.card.active {
+  border-color: var(--color-destructive);
+}
+
+.footer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-top: 16px;
+}

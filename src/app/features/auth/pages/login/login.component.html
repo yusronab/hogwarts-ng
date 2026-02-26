@@ -1,0 +1,38 @@
+<div class="flex items-center justify-center h-screen">
+  <section class="space-y-6 max-w-[90vw] w-[480px]">
+    <h2>Login</h2>
+
+    <form
+      [formGroup]="loginForm"
+      (ngSubmit)="onSubmit()"
+      class="flex flex-col gap-6 w-full"
+    >
+      <app-base-input-text
+        label="Email"
+        type="email"
+        placeholder="Masukkan email"
+        formControlName="email"
+        [error]="isInvalid(loginForm, 'email')"
+        [helperText]="getErrorMessage(loginForm, 'email')"
+      />
+
+      <app-base-input-text
+        label="Password"
+        type="password"
+        placeholder="Masukkan password"
+        formControlName="password"
+        [error]="isInvalid(loginForm, 'password')"
+        [helperText]="getErrorMessage(loginForm, 'password')"
+      />
+
+      <app-base-button
+        variant="contained"
+        [loading]="loading$ | async"
+        type="submit"
+        [disabled]="loginForm.invalid"
+      >
+        Login
+      </app-base-button>
+    </form>
+  </section>
+</div>

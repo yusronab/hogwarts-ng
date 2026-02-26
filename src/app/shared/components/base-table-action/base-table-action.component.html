@@ -1,0 +1,25 @@
+<div class="actions">
+  @if (useCreateButton()) {
+    <button type="button" class="btn primary" (click)="createClick.emit()">
+      <lucide-icon [img]="Plus" size="18" class="icon" />
+    </button>
+  }
+
+  @if (useUpdateButton()) {
+    <button type="button" class="btn primary" (click)="updateClick.emit()">
+      <lucide-icon [img]="Pencil" size="18" class="icon" />
+    </button>
+  }
+
+  @if (useDetailButton()) {
+    <button type="button" class="btn primary" (click)="detailClick.emit()">
+      <lucide-icon [img]="Eye" size="18" class="icon" />
+    </button>
+  }
+
+  @if (useDeleteButton()) {
+    <button type="button" class="btn danger" (click)="deleteClick.emit()">
+      <lucide-icon [img]="Trash2" size="18" class="icon" />
+    </button>
+  }
+</div>

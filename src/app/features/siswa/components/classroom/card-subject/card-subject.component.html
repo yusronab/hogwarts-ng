@@ -1,0 +1,27 @@
+<button
+  type="button"
+  class="card"
+  [class.active]="isActive()"
+  (click)="handleSelected()"
+>
+  <b>{{ subject().name || "-" }}</b>
+
+  <div>{{ subject().description || "-" }}</div>
+
+  <div class="footer">
+    <app-base-avatar
+      [image]="subject().teachers[0].profileImage"
+      [alt]="subject().teachers[0].fullName"
+      width="24px"
+      height="24px"
+    />
+
+    <div class="teacher">
+      {{ subject().teachers[0].fullName }}
+
+      @if (subject().teachers.length > 1) {
+        dan {{ subject().teachers.length - 1 }} lainnya
+      }
+    </div>
+  </div>
+</button>

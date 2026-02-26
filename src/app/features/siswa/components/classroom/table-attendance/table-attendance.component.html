@@ -1,0 +1,83 @@
+<div class="table-wrapper">
+  <table class="table" aria-describedby="attendance-table">
+    <thead>
+      <tr>
+        <th>Aksi</th>
+        <th>Guru Pengajar</th>
+        <th>Judul Pertemuan</th>
+        <th>Jam Mulai</th>
+        <th>Jam Selesai</th>
+        <th>Keterangan</th>
+        <th>Waktu Kehadiran</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      @if (attendances().length > 0; as data) {
+        @for (item of attendances(); track item.id) {
+          <tr>
+            <td>
+              <app-base-table-action
+                [useDetailButton]="true"
+                (detailClick)="navigateToDetail(item.id)"
+              />
+            </td>
+
+            <td>
+              {{ item.teacher.fullName || "-" }}
+            </td>
+
+            <td>
+              {{ item.title || "-" }}
+            </td>
+
+            <td>
+              {{ item.schedule.hour_start.slice(0, 5) }}
+            </td>
+
+            <td>
+              {{ item.schedule.hour_end.slice(0, 5) }}
+            </td>
+
+            <td>
+              <app-base-chip-status [status]="item.attendances[0].status" />
+            </td>
+
+            <td>
+              {{ formatDateTime(item.attendances[0].presentTime) }}
+            </td>
+          </tr>
+        }
+      } @else {
+        <tr>
+          <td colspan="7">
+            <div class="flex gap-2 items-center w-full justify-center">
+              <i-lucide [img]="InfoIcon" [size]="20"></i-lucide>
+              <p>Tidak ada pertemuan hari ini</p>
+            </div>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+@if (pagination(); as page) {
+  <div class="pagination">
+    <button
+      [disabled]="page.currentPage === 1"
+      (click)="changePage(page.currentPage - 1)"
+    >
+      Prev
+    </button>
+
+    <span> Halaman {{ page.currentPage }} dari {{ page.totalPages }} </span>
+
+    <button
+      [disabled]="page.currentPage === page.totalPages"
+      (click)="changePage(page.currentPage + 1)"
+    >
+      Next
+    </button>
+  </div>
+}

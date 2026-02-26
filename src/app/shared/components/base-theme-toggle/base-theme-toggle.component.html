@@ -1,0 +1,11 @@
+<button
+  type="button"
+  (click)="toggle()"
+  class="w-9 h-9 flex items-center justify-center rounded-lg hover:bg-accent transition cursor-pointer"
+>
+  @if (theme() === "dark") {
+    <i-lucide [img]="SunIcon" [size]="20"></i-lucide>
+  } @else {
+    <i-lucide [img]="MoonIcon" [size]="20"></i-lucide>
+  }
+</button>
