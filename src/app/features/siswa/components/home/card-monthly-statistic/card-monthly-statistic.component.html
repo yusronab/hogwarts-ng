@@ -1,15 +1,19 @@
 <section>
   <h2>Statistik Bulanan</h2>
 
-  @if (barChart(); as chart) {
-    <apx-chart
-      [series]="chart.series"
-      [chart]="chart.chart"
-      [xaxis]="chart.xaxis"
-      [plotOptions]="chart.plotOptions"
-      [dataLabels]="chart.dataLabels"
-      [legend]="chart.legend"
-    >
-    </apx-chart>
-  }
+  <div class="chart-scroll">
+    @if (barChart(); as chart) {
+      <div class="chart-inner">
+        <apx-chart
+          [series]="chart.series"
+          [chart]="chart.chart"
+          [xaxis]="chart.xaxis"
+          [plotOptions]="chart.plotOptions"
+          [dataLabels]="chart.dataLabels"
+          [legend]="chart.legend"
+        >
+        </apx-chart>
+      </div>
+    }
+  </div>
 </section>
